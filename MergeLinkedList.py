@@ -15,24 +15,29 @@
 """
 
 def CompareLists(headA, headB):
-    A =headA
-    B= headB
-    countA= 0
-    countB = 0
-    while A.next!= None:
-        A = A.next
-        countA =countA+ 1
-    while B.next != None:
-        B = B.next
-        countB = countB +  1
-    if countA != countB:
-        return 0
-    
-    while A.next != None or B.next != None:
-        if A.data != B.data:
-            return 0
-        A = A.next
-        B = B.next
-    if A.data != B.data:
-        return 0
-    return 1
+    if headA == None:
+        return headB
+    if headB == None:
+        return headA
+    curr = None
+    if headA.data > headB.data:
+        curr = headB
+        headB = headB.next
+    else: 
+        curr = headA
+        headA = headA.next
+    node = curr
+    while headA != None and headB != None:
+        if headA.data < headB.data:
+            node.next = headA
+            headA = headA.next
+        else:
+            node.next = headB
+            headB = headB.next
+        node = node.next    
+            
+    if headA == None:
+        node.next = headB
+    else:
+        node.next = headA
+    return curr
