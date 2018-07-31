@@ -17,8 +17,15 @@
 
 def ReversePrint(head):
     
-    if head:
-        ReversePrint(head.next)
-        print(head.data)
-  
-  
+    p = head
+    if head == None:
+        return 0;
+    while(p.next != None):
+        p = p.next
+    while(p != head):
+        print(p.data)
+        q = head
+        while(q.next != p):
+            q = q.next
+        p = q 
+    print(head.data) 
